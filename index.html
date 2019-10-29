@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body onkeydown="bodyKeyPress();">
+    <button onclick="generate();">Uus number</button>
+    <input id="number" style="display:none;" onkeypress="keypress();" type="text">
+    <span id="flag"></span>
+    <div>
+      <button id="play" style="display:none;" onclick="play();">Kuula uuesti</button>
+      <button id="show" style="display:none;" onclick="show();">Vaata õige vastus</button>
+    </div>
+  </body>
+  <script>
+    var number;
+    var audio;
+    var oNumberField = document.getElementById("number");
+    var oPlayButton = document.getElementById("play");
+    var oShowButton = document.getElementById("show");
+    var oFlag = document.getElementById("flag");
+
+    function show() {
+      oNumberField.value = number;
+    }
+    function generate() {
+      number = Math.floor(Math.random()*99);
+      console.log("Genereeritud: " + number);
+      var lang = 'et';
+      var filename = lang + '/' + number + '.mp3'
+      oNumberField.style.display = 'initial';
+      oPlayButton.style.display = 'initial';
+      oShowButton.style.display = 'initial';
+      oNumberField.value = '';
+      oFlag.innerHTML = '';
+      audio = new Audio(filename);
+      play();
+    };
+
+    function play() {
+      audio.play();
+      oNumberField.focus();
+    };
+
+    function keypress(e) {
+      if (!e) e = window.event;
+      var key = e.key;
+      if (key == 'Enter'){
+        check();
+        return false;
+      } else {
+        oFlag.innerHTML = '';
+      }
+    };
+
+    function bodyKeyPress(e) {
+      if (!e) e = window.event;
+      var key = e.key;
+      if (key == 'Escape') {
+        generate();
+        return false;
+      }
+    };
+
+    function check() {
+      console.log("Sisestatud: " + oNumberField.value);
+      if (oNumberField.value == number) {
+        oFlag.style.color = 'darkgreen';
+        oFlag.innerHTML = 'Õige!'
+        oShowButton.style.display = 'none';
+      } else {
+        oFlag.style.color = 'darkred';
+        oFlag.innerHTML = 'Vale!'
+        oShowButton.style.display = 'initial';
+      }
+    };
+  </script>
+</html>
