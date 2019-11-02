@@ -4,17 +4,15 @@
 
 A simple [Javascript page](https://ostankin.github.io/numbers-training/)
 to practice recognizing Estonian spoken numbers.
-Click `Uus number` or hit `Esc` to start, or to generate a new number.
-Type the number you hear, then hit `Enter`. To listen again,
-click `Kuula uuesti`. To show the correct answer, click `Vaata õige vastus`.
+Click `Uus number` or hit `Esc` to start (also to generate a new number).
+Type the number you hear, then hit `Enter` or click `Kontrolli`.
+To listen again, click `Kuula uuesti`. To show the correct answer, click `?`.
 
 Numbers are generated randomly in the range between `0` and `99`.
 
 # Improvement plans
 
-* Rework usability
 * Add an option to train hundreds and thousands
-* Extract page formatting into a CSS
 * Add more languages
 * Introduce ordinal numbers
 
