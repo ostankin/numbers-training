@@ -7,6 +7,36 @@
   padding: 10px;
 }
 
+#main-section button {
+  margin-right: 0.5em
+}
+
+#number-field {
+  width: 70%;
+  margin: 0.5em 15% 0.5em 15%;
+  text-align: center;
+}
+
+#game-control-section #generate-button {
+  float:left;
+}
+
+#game-control-section #play-button {
+  float:right;
+}
+
+#answer-control-section {
+  font-weight: bolder;
+}
+
+#correct-answer-block {
+  color: green;
+}
+
+#wrong-answer-block {
+  color: red;
+}
+
 button {
   font-size: 1em;
 }
@@ -49,6 +79,6 @@ body {
     font-size: initial;
   }
   .center {
-    width: 100%;
+    width: 99%;
   }
 }

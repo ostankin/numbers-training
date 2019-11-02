@@ -13,7 +13,7 @@
         <input id="number-field" onkeypress="keypress();" type="text">
       </div>
       <div id="answer-control-section">
-        <button id="show-button" onclick="show();">Vaata õige vastus</button>
+        <button id="show-button" onclick="show();">?</button>
         <button id="check-button" onclick="check();">Kontrolli</button>
       </div>
       <div id="result-section">
@@ -62,6 +62,7 @@
       var lang = 'et';
       var filename = lang + '/' + number + '.mp3'
       showElements([oNumberField, oPlayButton, oShowButton, oCheckButton]);
+      hideElements([oCorrectAnswerBlock, oWrongAnswerBlock]);
       oNumberField.value = '';
       audio = new Audio(filename);
       play();
