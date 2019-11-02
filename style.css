@@ -5,6 +5,7 @@
   transform: translate(-50%, -50%);
   border: 1px solid black;
   padding: 10px;
+  background-color: lightblue;
 }
 
 #main-section button {
@@ -29,11 +30,21 @@
   font-weight: bolder;
 }
 
+#show-button {
+  float: left;
+}
+
+#check-button {
+  float: left;
+}
+
 #correct-answer-block {
+  float: right;
   color: green;
 }
 
 #wrong-answer-block {
+  float: right;
   color: red;
 }
 
