@@ -26,6 +26,7 @@
     var number;
     var audio;
     var oNumberField = document.getElementById("number-field");
+    var oGenerateButton = document.getElementById("generate-button");
     var oPlayButton = document.getElementById("play-button");
     var oShowButton = document.getElementById("show-button");
     var oCheckButton = document.getElementById("check-button");
@@ -97,6 +98,7 @@
       console.log("Sisestatud: " + oNumberField.value);
       if (oNumberField.value == number) {
         showElements([oCorrectAnswerBlock]);
+        oGenerateButton.focus();
         hideElements([oShowButton, oCheckButton, oWrongAnswerBlock]);
       } else {
         showElements([oWrongAnswerBlock, oShowButton]);
