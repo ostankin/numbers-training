@@ -1,15 +1,25 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
   </head>
   <body onkeydown="bodyKeyPress();">
-    <button id="generate-button" onclick="generate();">Uus number</button>
-    <input id="number-field" style="display:none;" onkeypress="keypress();" type="text">
-    <span id="result-block"></span>
-    <div>
-      <button id="play-button" style="display:none;" onclick="play();">Kuula uuesti</button>
-      <button id="show-button" style="display:none;" onclick="show();">Vaata õige vastus</button>
+    <div id="main-section" style="display:none;" class="center">
+      <div id="game-control-section">
+        <button id="generate-button" onclick="generate();">Uus number</button>
+        <button id="play-button" onclick="play();">Kuula uuesti</button>
+        <input id="number-field" onkeypress="keypress();" type="text">
+      </div>
+      <div id="answer-control-section">
+        <button id="show-button" onclick="show();">Vaata õige vastus</button>
+        <button id="check-button" onclick="check();">Kontrolli</button>
+      </div>
+      <div id="result-section">
+        <div id="correct-answer-block">✔ Õige!</div>
+        <div id="wrong-answer-block">✖ Vale!</div>
+      </div>
     </div>
   </body>
   <script>
@@ -18,21 +28,41 @@
     var oNumberField = document.getElementById("number-field");
     var oPlayButton = document.getElementById("play-button");
     var oShowButton = document.getElementById("show-button");
-    var oResultBlock = document.getElementById("result-block");
+    var oCheckButton = document.getElementById("check-button");
+    var oCorrectAnswerBlock = document.getElementById("correct-answer-block");
+    var oWrongAnswerBlock = document.getElementById("wrong-answer-block");
+    init();
+
+    function showElements(elements) {
+      elements.forEach(function(element) {
+        element.style.display = 'initial';
+      });
+    }
+
+    function hideElements(elements) {
+      elements.forEach(function(element) {
+        element.style.display = 'none';
+      });
+    }
 
     function show() {
       oNumberField.value = number;
+      hideElements([oShowButton, oCheckButton, oCorrectAnswerBlock, oWrongAnswerBlock]);
     }
+
+    function init() {
+      hideElements([oCorrectAnswerBlock, oWrongAnswerBlock]);
+      hideElements([oPlayButton, oNumberField, oCheckButton, oShowButton]);
+      showElements([document.getElementById('main-section')]);
+    }
+
     function generate() {
       number = Math.floor(Math.random()*99);
       console.log("Genereeritud: " + number);
       var lang = 'et';
       var filename = lang + '/' + number + '.mp3'
-      oNumberField.style.display = 'initial';
-      oPlayButton.style.display = 'initial';
-      oShowButton.style.display = 'initial';
+      showElements([oNumberField, oPlayButton, oShowButton, oCheckButton]);
       oNumberField.value = '';
-      oResultBlock.innerHTML = '';
       audio = new Audio(filename);
       play();
     };
@@ -49,7 +79,7 @@
         check();
         return false;
       } else {
-        oResultBlock.innerHTML = '';
+        hideElements([oCorrectAnswerBlock, oWrongAnswerBlock]);
       }
     };
 
@@ -65,13 +95,11 @@
     function check() {
       console.log("Sisestatud: " + oNumberField.value);
       if (oNumberField.value == number) {
-        oResultBlock.style.color = 'darkgreen';
-        oResultBlock.innerHTML = 'Õige!'
-        oShowButton.style.display = 'none';
+        showElements([oCorrectAnswerBlock]);
+        hideElements([oShowButton, oCheckButton, oWrongAnswerBlock]);
       } else {
-        oResultBlock.style.color = 'darkred';
-        oResultBlock.innerHTML = 'Vale!'
-        oShowButton.style.display = 'initial';
+        showElements([oWrongAnswerBlock, oShowButton]);
+        hideElements([oCorrectAnswerBlock, oCorrectAnswerBlock]);
       }
     };
   </script>

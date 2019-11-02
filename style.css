@@ -1,0 +1,54 @@
+#main-section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  padding: 10px;
+}
+
+button {
+  font-size: 1em;
+}
+
+input {
+  font-size: 1em;
+}
+
+body {
+  font-size: xx-large;
+}
+
+.center {
+  margin: auto;
+  width: 40%;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: large;
+  }
+  .center {
+    margin: auto;
+    width: 90%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1224px) {
+  body {
+    font-size: x-large;
+  }
+  .center {
+    margin: auto;
+    width: 50%;
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    font-size: initial;
+  }
+  .center {
+    width: 100%;
+  }
+}
